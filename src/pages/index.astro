@@ -1,17 +1,164 @@
 ---
+import Page from "../layouts/Page.astro";
+import ButtonLink from "../components/ButtonLink.astro";
+import Card from "../components/Card.astro";
 
+import Profile from "../images/jesse-headshot.jpg";
+import RoyalRoadLogo from "../images/logos/royal-road.png";
+import PatreonLogo from "../images/logos/patreon.png";
+import RicklefordCover from "../images/books/RickleFord-cover.png";
+import TheBanisherChronicles0Cover from "../images/books/TheBanisherChronicles-TheTraitorsReturn-cover.png";
+import TheOrionDivision0Cover from "../images/books/TheOrionDivision-OfStormAndRuin-cover.png";
+import TheSoundShaperSeries2Cover from "../images/books/TheSoundShaperSeries-TheLabyrinthOfSound-cover.png";
+import TheSoundShaperSeries1Cover from "../images/books/TheSoundShaperSeries-TrialOfTheAncients-cover.png";
+import TheSoundShaperSeries0Cover from "../images/books/TheSoundShaperSeries-ProjectExodus-cover.png";
+import Form from "../components/form/Form.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Page title="Jesse Gerlach">
+  <main class="p-4 lg:max-w-7xl lg:mx-auto">
+    <div class="min-h-screen flex flex-col items-center justify-center">
+      <h1 class="lg:text-[10rem] md:text-[8rem] text-5xl text-center">
+        Jesse Gerlach
+      </h1>
+      <p class="lg:text-4xl md:text-2xl text-lg">Author - Husband - Father</p>
+    </div>
+
+    <div class="h-screen/2 py-30">
+      <p class="md:text-3xl text-2xl text-center font-bold mb-16!">
+        I am open for hire!
+      </p>
+      <p class="md:text-3xl text-2xl text-center mb-16!">
+        As a professional ghostwriter, worldbuilder, outliner, editor, and
+        co-writer. I am also professional DM, if you're looking for an epic new
+        campaign, be it a homebrew, Daggerheart, Tales From the Loop, DND (5e or
+        another edition), or a new one I haven't heard of.
+      </p>
+      <p class="md:text-3xl text-2xl text-center">
+        I have competitive prices on each of those! <a
+          href="#contact"
+          class="underline"
+        >
+          Send me a message below!
+        </a>
+      </p>
+    </div>
+
+    <div class="h-screen/2 py-30 text-xl">
+      <img
+        src={Profile.src}
+        alt="Stoic headshot of Jesse Gerlach with red beard and pony tail in the woods."
+        class="border-4 border-white w-60 sm:float-left shadow sm:mr-4 mb-4"
+      />
+      <p>
+        Hi! I'm paid to create interdimensional portals conveniently disguised
+        as books.
+      </p>
+      <p>
+        I am also a published author, and father to two incredible boys, Ozias
+        and Théoden, both of whom are kings in the making. My beautiful wife and
+        I live by the river where swords and imagination run wild. My
+        not-so-secret goal is to give my children a bookshelf's worth of stories
+        they can spend countless hours reading, discussing, and (lightly) making
+        fun of in front of the author.
+      </p>
+      <p>
+        More than that, I am convinced that all stories, if done well, reflect
+        the one True Story, written by God. As such, my tales contain intense
+        arcs of darkness and light, violence and mercy, evil and good---just
+        like our stories do. I don't shirk away from those things, nor do I
+        sugarcoat them. Instead, I do my best to demonstrate for my sons, as
+        well as for you readers, what it looks like to truly conquer evil and
+        fight for a life worth living.
+      </p>
+      <p>Join me. I can't wait to get to know you.</p>
+    </div>
+
+    <div
+      class="flex flex-row flex-wrap items-center justify-center lg:gap-16 md:gap-8 gap-4"
+    >
+      <ButtonLink
+        href="https://www.royalroad.com/profile/419627"
+        target="_blank"
+      >
+        <span class="flex flex-row justify-center items-center gap-2">
+          <img
+            src={RoyalRoadLogo.src}
+            alt="Royal Road Logo"
+            class="h-8 rounded-md bg-blue-700"
+          />
+          <span>Royal Road</span>
+        </span>
+      </ButtonLink>
+      <ButtonLink
+        href="https://www.patreon.com/cw/JesseGerlachWrites"
+        target="_blank"
+      >
+        <img src={PatreonLogo.src} alt="Patreon Logo" class="lg:h-10 h-6" />
+        <span class="sr-only">Patreon</span>
+      </ButtonLink>
+      <ButtonLink href="/Gerlach, Jesse - Resumé.pdf" target="_blank">
+        Resumé
+      </ButtonLink>
+      <ButtonLink href="#contact">Message Me!</ButtonLink>
+    </div>
+
+    <div class="flex flex-col items-center py-30">
+      <h2 class="mb-8 text-3xl font-bold">~~~ My Books ~~~</h2>
+      <div
+        class="flex flex-row flex-wrap items-center justify-center gap-8 m-8"
+      >
+        <Card
+          cover={TheSoundShaperSeries0Cover.src}
+          href="https://www.amazon.com/Project-Exodus-Sound-Shaper-Gerlach/dp/B0BMZP8ZNV"
+        />
+        <Card
+          cover={TheSoundShaperSeries1Cover.src}
+          href="https://www.amazon.com/Trial-Ancients-Jesse-Gerlach/dp/B0C9SHLSJD"
+        />
+        <Card
+          cover={TheSoundShaperSeries2Cover.src}
+          href="https://www.amazon.com/Labyrinth-Sound-Shaper/dp/B0D97VVMQZ"
+        />
+      </div>
+      <div
+        class="flex flex-row flex-wrap items-center justify-center gap-8 m-8"
+      >
+        <Card
+          cover={RicklefordCover.src}
+          href="https://www.amazon.com/Rickleford-Jesse-Alexander-Gerlach/dp/B0GQTJY9CV"
+        />
+        <Card
+          cover={TheBanisherChronicles0Cover.src}
+          href="https://www.amazon.com/Banisher-Chronicles-Jesse-Alexander-Gerlach/dp/B0GR4RGVWS"
+        />
+        <Card
+          cover={TheOrionDivision0Cover.src}
+          href="https://www.amazon.com/Orion-Division-Jesse-Alexander-Gerlach/dp/B0GQTBYF26"
+        />
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center py-16">
+      <ButtonLink
+        href="https://www.royalroad.com/profile/419627"
+        target="_blank"
+      >
+        <span class="flex flex-row justify-center items-center gap-2 w-fit">
+          <img
+            src={RoyalRoadLogo.src}
+            alt="Royal Road Logo"
+            class="h-8 rounded-md bg-blue-700"
+          />
+          <span>More on Royal Road</span>
+        </span>
+      </ButtonLink>
+    </div>
+
+    <div class="py-30">
+      <div class="bg-orange-200 rounded-3xl" id="contact">
+        <Form />
+      </div>
+    </div>
+  </main>
+</Page>

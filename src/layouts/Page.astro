@@ -1,0 +1,45 @@
+---
+import "../main.css";
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <!--     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" /> -->
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta
+      name="description"
+      content="Discover Jesse Gerlach, a storyteller, writer, husband,\
+       father, poet, actor, and swordsman whose work spans theatre, literature,\
+        and immersive series."
+    />
+    <meta name="author" content="Jesse Gerlach" />
+    <meta
+      name="keywords"
+      content="Jesse Gerlach, author, storyteller, literature, theatre,\
+       fantasy, Christian fiction, ghostwriter, The Sound Shaper Series,\
+        The Banisher Chronicles"
+    />
+    <meta property="og:title" content={title} />
+    <meta
+      property="og:description"
+      content="Explore the creative world of Jesse Gerlach, a devoted\ husband and\
+       father whose stories captivate readers and audiences alike."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta
+      name="twitter:description"
+      content="Explore the creative world of Jesse Gerlach, a writer and storyteller\
+       with a passion for immersive narratives."
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

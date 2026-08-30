@@ -1,0 +1,16 @@
+---
+interface Props {
+  href: string;
+  target?: string;
+}
+
+const { href, target = "_self" }: Props = Astro.props;
+---
+
+<a
+  class="btn lg:text-3xl shadow w-fit h-16 flex items-center justify-center text-black font-bold"
+  {href}
+  {target}
+>
+  <slot />
+</a>

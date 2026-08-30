@@ -1,0 +1,15 @@
+---
+interface Props {
+  name: string;
+  label: string;
+  type: astroHTML.JSX.HTMLInputTypeAttribute;
+  required: boolean;
+}
+
+const { name, label, type, required = false } = Astro.props;
+---
+
+<div class="mb-4 flex flex-col">
+  <label for={name} class="sr-only">{label}</label>
+  <input {name} id={name} {type} {required} placeholder={label} />
+</div>

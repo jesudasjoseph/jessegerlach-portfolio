@@ -1,0 +1,21 @@
+---
+interface Props {
+  cover: string;
+  href: string;
+}
+
+const { cover, href }: Props = Astro.props;
+---
+
+<a
+  {href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="w-fit h-fit cursor-pointer overflow-hidden relative transition-all duration-[150ms,50ms] ease-in-out hover:scale-[1.05] active:scale-[1.02] hover:shadow-lg hover:[&_div]:animate-breath"
+>
+  <div
+    class="absolute opacity-15 bg-white left-0 top-0 right-0 bottom-0 transition-all duration-[200ms,50ms] ease-in-out"
+  >
+  </div>
+  <img src={cover} alt="" class="mx-auto w-80" />
+</a>
