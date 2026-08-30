@@ -1,5 +1,4 @@
 ---
-import { WEB3FORMS_ACCESS_KEY } from "astro:env/client";
 import Input from "./Input.astro";
 ---
 
@@ -52,7 +51,11 @@ import Input from "./Input.astro";
   <h2 class="mb-8 text-3xl font-bold text-orange-500 text-shadow-lg">
     Send me a message
   </h2>
-  <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+  <input
+    type="hidden"
+    name="access_key"
+    value={import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY}
+  />
 
   <Input label="Name" name="name" type="text" required />
   <Input label="Email" name="email" type="email" required />
