@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy
 
 on:
   # Trigger the workflow every time you push to the `main` branch
@@ -24,7 +24,7 @@ jobs:
         uses: withastro/action@v6
         with:
           env:
-            PUBLIC_WEB3FORMS_ACCESS_KEY: { { WEB3FORMS_ACCESS_KEY } }
+            PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ vars.WEB3FORMS_ACCESS_KEY }}
 
   deploy:
     needs: build
