@@ -12,7 +12,7 @@ import TheOrionDivision0Cover from "../images/books/TheOrionDivision-OfStormAndR
 import TheSoundShaperSeries2Cover from "../images/books/TheSoundShaperSeries-TheLabyrinthOfSound-cover.png";
 import TheSoundShaperSeries1Cover from "../images/books/TheSoundShaperSeries-TrialOfTheAncients-cover.png";
 import TheSoundShaperSeries0Cover from "../images/books/TheSoundShaperSeries-ProjectExodus-cover.png";
-import Form from "../components/form/Form.astro";
+import ContactForm from "../components/ContactForm.svelte";
 ---
 
 <Page title="Jesse Gerlach">
@@ -157,7 +157,10 @@ import Form from "../components/form/Form.astro";
 
     <div class="py-30">
       <div class="bg-orange-200 rounded-3xl" id="contact">
-        <Form />
+        <ContactForm
+          web3forms_key={import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY}
+          client:load
+        />
       </div>
     </div>
   </main>

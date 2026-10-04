@@ -1,4 +1,6 @@
 <script lang="ts">
+  const { web3forms_key } = $props();
+
   let formError: "captcha" | "submission" | null = $state(null);
   let submitted = $state(false);
 
@@ -38,10 +40,6 @@
   }
 </script>
 
-<svelte:head>
-  <script src="https://web3forms.com/client/script.js" async defer></script>
-</svelte:head>
-
 {#snippet inputwithlabel(
   label: string,
   name: string,
@@ -71,11 +69,7 @@
     <h2 class="mb-8 text-3xl font-bold text-orange-500 text-shadow-lg">
       Send me a message
     </h2>
-    <input
-      type="hidden"
-      name="access_key"
-      value={env.PUBLIC_WEB3FORMS_ACCESS_KEY}
-    />
+    <input type="hidden" name="access_key" value={web3forms_key} />
 
     {@render inputwithlabel("Name", "name", "text", true)}
     {@render inputwithlabel("Email", "email", "email", true)}
