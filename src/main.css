@@ -1,64 +1,55 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @theme {
-	--shadow-md: 8px 16px 0 var(--color-black);
-	--shadow-lg: 14px 20px 0 var(--color-black);
+  --shadow-md: 8px 16px 0 var(--color-black);
+  --shadow-lg: 14px 20px 0 var(--color-black);
 
-	--animate-breath: breath 3s infinite;
+  --animate-breath: breath 3s infinite;
 
-	@keyframes breath {
-		0% {
-			opacity: 15%;
-		}
-		50% {
-			opacity: 0%;
-		}
-		100% {
-			opacity: 15%;
-		}
-	}
+  @keyframes breath {
+    0% {
+      opacity: 15%;
+    }
+    50% {
+      opacity: 0%;
+    }
+    100% {
+      opacity: 15%;
+    }
+  }
 }
 
 @layer base {
-	html {
-		@apply bg-gray-900;
-	}
-	body {
-		@apply text-white;
-	}
-	h1,
-	h2,
-	h3 {
-		@apply font-serif font-bold uppercase;
-	}
+  html {
+    @apply bg-gray-900;
+  }
+  body {
+    @apply text-white;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-serif font-bold uppercase;
+  }
 
-	body,
-	p {
-		@apply mb-4 font-sans;
-	}
-
-	label {
-		@apply text-lg text-black;
-	}
-
-	input,
-	textarea {
-		@apply rounded border border-orange-300 bg-orange-100 p-4 text-orange-500 placeholder-orange-300;
-	}
+  body,
+  p {
+    @apply mb-4 font-sans;
+  }
 }
 
 @layer components {
-	.btn {
-		@apply my-2 cursor-pointer rounded-xl bg-orange-400 p-4 transition-colors duration-300 hover:bg-orange-500;
+  .btn {
+    @apply my-2 cursor-pointer rounded-xl bg-orange-400 p-4 transition-colors duration-300 hover:bg-orange-500;
 
-		box-shadow: 1px 2px black;
+    box-shadow: 1px 2px black;
 
-		&:hover {
-			transform: translateY(-2px), translateX(-2px);
-			box-shadow: 3px 6px black;
-		}
+    &:hover {
+      transform: translateY(-2px), translateX(-2px);
+      box-shadow: 3px 6px black;
+    }
 
-		&:active {
-			box-shadow: 2px 4px black;
-		}
-	}
+    &:active {
+      box-shadow: 2px 4px black;
+    }
+  }
 }

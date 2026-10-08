@@ -46,10 +46,8 @@
     Object.fromEntries(questions.map((value) => [value.id, ""])),
   );
 
-  const onNavigate = (id: string) => {
-    document
-      .querySelector(`#${id}-container`)
-      ?.scrollIntoView({ behavior: "smooth" });
+  const smoothScroll = (id: string) => {
+    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
   };
 </script>
 
@@ -62,17 +60,35 @@
     type="text"
     value="Fiction"
   />
-  <div>
-    {#each questions as question}
+  <div class="m-auto max-w-3xl">
+    {#each questions as question, index}
       <div
-        class="h-dvh flex items-center justify-center"
+        class="h-dvh flex items-center justify-center flex-col"
         id="{question.id}-container"
       >
-        <Question {question} bind:value={answers[question.id]} />
+        <Question {question} {index} bind:value={answers[question.id]} />
+        {#if questions.length == index + 1}
+          <button
+            type="button"
+            class="btn"
+            onclick={() => smoothScroll("#review")}
+          >
+            Review Questions
+          </button>
+        {:else}
+          <button
+            type="button"
+            class="btn"
+            onclick={() =>
+              smoothScroll(`#${questions[index + 1].id}-container`)}
+          >
+            Next Question
+          </button>
+        {/if}
       </div>
     {/each}
     <div>
-      <h3>Review</h3>
+      <h3 id="review">Review</h3>
       <ol class="list-decimal list-inside marker:text-xl">
         {#each questions as question}
           <li>
@@ -80,7 +96,7 @@
               class="text-xl text-left cursor-pointer"
               type="button"
               onclick={() => {
-                onNavigate(question.id);
+                smoothScroll(`#${question.id}-container`);
               }}
             >
               {question.label}

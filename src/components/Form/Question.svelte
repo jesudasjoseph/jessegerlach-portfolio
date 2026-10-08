@@ -6,26 +6,29 @@
     RadioQuestion,
     TextQuestion,
   } from "./config";
+  import TextArea from "./TextArea.svelte";
 
   let {
     question,
+    index,
     value = $bindable(""),
   }: {
     question: Question &
       (PackageQuestion | MultipleChoiceQuestion | RadioQuestion | TextQuestion);
+    index: number;
     value: string;
   } = $props();
 </script>
 
 <div>
   {#if question.intro}
-    <p>
+    <p class="text-2xl">
       {question.intro}
     </p>
   {/if}
   {#if question.type == "text"}
-    <label>
-      {question.label}
+    <label class="text-2xl">
+      {index + 1}. {question.label}
       <input
         type="text"
         name={question.name}
@@ -35,14 +38,14 @@
       />
     </label>
   {:else if question.type == "long-text"}
-    <label>
-      {question.label}
-      <textarea name={question.name} id={question.id} bind:value required>
-      </textarea>
+    <label class="text-2xl">
+      {index + 1}. {question.label}
+      <TextArea name={question.name} id={question.id} bind:value required
+      ></TextArea>
     </label>
   {:else if question.type == "radio"}
-    <fieldset>
-      <legend>{question.label}</legend>
+    <fieldset class="text-2xl">
+      <legend>{index + 1}. {question.label}</legend>
       {#each question.choices as choice}
         <label>
           <input
@@ -57,8 +60,8 @@
       {/each}
     </fieldset>
   {:else if question.type == "multiple-choice"}
-    <fieldset>
-      <legend>{question.label}</legend>
+    <fieldset class="text-2xl">
+      <legend>{index + 1}. {question.label}</legend>
       {#each question.choices as choice}
         <label>
           <input
@@ -73,8 +76,8 @@
       {/each}
     </fieldset>
   {:else if question.type == "package"}
-    <fieldset>
-      <legend>{question.label}</legend>
+    <fieldset class="text-2xl">
+      <legend>{index + 1}. {question.label}</legend>
       {#each question.choices as choice}
         <label>
           <input
@@ -90,4 +93,3 @@
     </fieldset>
   {/if}
 </div>
-{question}
