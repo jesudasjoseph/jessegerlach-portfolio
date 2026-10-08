@@ -16,6 +16,9 @@ import ContactForm from "../components/ContactForm.svelte";
 ---
 
 <Page title="Jesse Gerlach">
+  <Fragment slot="head">
+    <script src="https://web3forms.com/client/script.js" async defer></script>
+  </Fragment>
   <main class="p-4 lg:max-w-7xl lg:mx-auto">
     <div class="min-h-screen flex flex-col items-center justify-center">
       <h1 class="lg:text-[10rem] md:text-[8rem] text-5xl text-center">
@@ -158,7 +161,7 @@ import ContactForm from "../components/ContactForm.svelte";
     <div class="py-30">
       <div class="bg-orange-200 rounded-3xl" id="contact">
         <ContactForm
-          web3forms_key={import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY}
+          web3formsKey={import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY}
           client:load
         />
       </div>

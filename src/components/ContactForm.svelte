@@ -1,5 +1,5 @@
 <script lang="ts">
-  const { web3forms_key } = $props();
+  const { web3formsKey } = $props();
 
   let formError: "captcha" | "submission" | null = $state(null);
   let submitted = $state(false);
@@ -69,7 +69,7 @@
     <h2 class="mb-8 text-3xl font-bold text-orange-500 text-shadow-lg">
       Send me a message
     </h2>
-    <input type="hidden" name="access_key" value={web3forms_key} />
+    <input type="hidden" name="access_key" value={web3formsKey} />
 
     {@render inputwithlabel("Name", "name", "text", true)}
     {@render inputwithlabel("Email", "email", "email", true)}
