@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-
 @theme {
 	--shadow-md: 8px 16px 0 var(--color-black);
 	--shadow-lg: 14px 20px 0 var(--color-black);
