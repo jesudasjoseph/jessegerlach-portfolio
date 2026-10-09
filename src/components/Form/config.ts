@@ -94,6 +94,33 @@ might need. It’s extremely flexible, and you pay for what you need. My hourly 
 and includes nearly a decade of professional experience, resources, hard-won wisdom, and the option to \
 meet in person or online, should you choose. If you only need a 30-minute session, that will cost \
 <strong>$35.</strong>",
+"This is the most popular choice and is best for authors who haven't yet begun their writing journey. \
+I collaborate with you every step of the way, helping with market research, forging an outline that \
+fits your genre perfectly, formatting it for publishing, and getting it out there either to publishing \
+houses or through self-publishing. I support you at every step, with as much help as you need. The best \
+part? You only pay per milestone. If you need to take a break, we reach the end of the milestone and can \
+pick it back up whenever you’re ready! \
+</br></br>The Milestones are as follows: \
+<ul>\
+  <li>Market research: <strong>$100</strong></li>\
+  <li>Outline: <strong>$600</strong> (Chapters, sections, research, etc.)</li>\
+  <li>Chapter writing coaching and editing: (negotiated based on book length, but usually around <strong>$500</strong>)</li>\
+  <li>Publish-ready formatting and proofreading: <strong>$300</strong></li>\
+  <li>(Optional) Cover art and Self-Publishing assistance: <strong>$400</strong></li>\
+  <li>Total: <strong>$1,900</strong></li>\
+</ul>\
+</br>Just so you know, most writing coaches, outliners, and editors combined cost over $6,000. I’m the full package, \
+at a fraction of the cost. And you can spread that cost as much as your project needs, hence the milestones!",
+"This is all of the milestones put together, but you take on the role of a director, making all the creative \
+choices, but doing none of the legwork. That’s left to me, where I will personally ghostwrite or co-write the \
+book with you. This guarantees all of the ideas are yours and original, but you don’t have to commit a few \
+hundred hours to make this dream book come to life on your own! With over 160+ similar projects under my belt, \
+I will ensure the book sounds, feels, and looks like yours, emulating your intent and style as seamlessly as I \
+can. Because I’ll handle all the writing, outlining, editing, proofreading, and other steps under your direction, \
+this package costs <strong>$3,500.</strong> \
+</br></br>I know this sounds like a lot, and it is, but this is a very average cost for this sort of package. I have \
+ghostwriting colleagues who demand double this. Because I know most of you are just starting out, I want to make \
+sure your dream book is actually affordable."
       ],
     },
     {

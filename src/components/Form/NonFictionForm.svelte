@@ -63,14 +63,14 @@
   <div class="m-auto max-w-3xl">
     {#each questions as question, index}
       <div
-        class="h-dvh flex items-center justify-center flex-col"
+        class="min-h-dvh flex items-center justify-center flex-col relative pt-8 pb-30"
         id="{question.id}-container"
       >
         <Question {question} {index} bind:value={answers[question.id]} />
         {#if questions.length == index + 1}
           <button
             type="button"
-            class="btn"
+            class="btn absolute bottom-8 m-0"
             onclick={() => smoothScroll("#review")}
           >
             Review Questions
@@ -78,7 +78,7 @@
         {:else}
           <button
             type="button"
-            class="btn"
+            class="btn absolute bottom-8 m-0"
             onclick={() =>
               smoothScroll(`#${questions[index + 1].id}-container`)}
           >
@@ -87,21 +87,22 @@
         {/if}
       </div>
     {/each}
-    <div>
+    <div class="py-8">
       <h3 id="review">Review</h3>
-      <ol class="list-decimal list-inside marker:text-xl">
-        {#each questions as question}
-          <li>
+      <ol class="list-outside marker:text-3xl">
+        {#each questions as question, index}
+          <li class="mb-16">
             <button
-              class="text-xl text-left cursor-pointer"
+              class="text-xl text-left cursor-pointer mb-4"
               type="button"
               onclick={() => {
                 smoothScroll(`#${question.id}-container`);
               }}
             >
+              <span class="text-3xl font-bold">{index + 1}.</span>
               {question.label}
             </button>
-            <p class="text-xl">
+            <p class="text-xl border-b border-gray-600 p-2">
               {answers[question.id] ? answers[question.id] : "No Answer"}
             </p>
           </li>
