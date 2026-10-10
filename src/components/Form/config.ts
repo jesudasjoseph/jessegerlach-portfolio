@@ -59,7 +59,7 @@ associated contact information. I’m good, but not that good.)",
         "Autobiography",
         "Medical",
         "Journalistic",
-        "or Other",
+        "Other",
       ],
     },
     {

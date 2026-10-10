@@ -63,7 +63,7 @@
   <div class="m-auto max-w-3xl">
     {#each questions as question, index}
       <div
-        class="min-h-dvh flex items-center justify-center flex-col relative pt-8 pb-30"
+        class="min-h-dvh flex items-center justify-start flex-col relative pt-8 pb-30 mb-12"
         id="{question.id}-container"
       >
         <Question {question} {index} bind:value={answers[question.id]} />
@@ -87,8 +87,8 @@
         {/if}
       </div>
     {/each}
-    <div class="py-8">
-      <h3 id="review">Review</h3>
+    <div id="review" class="py-8">
+      <h2>Review</h2>
       <ol class="list-outside marker:text-3xl">
         {#each questions as question, index}
           <li class="mb-16">
