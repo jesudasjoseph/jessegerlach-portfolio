@@ -33,7 +33,7 @@
         {question.label}
       </span>
       <input
-        class="border rounded-lg p-2"
+        class="border border-gray-500 rounded-bl-xl rounded-tr-xl p-3 text-xl"
         type="text"
         name={question.name}
         id={question.id}
