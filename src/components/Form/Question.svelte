@@ -121,7 +121,9 @@
         {/each}
       </div>
       <div
-        class="package-description border border-t-0 border-gray-400 bg-gray-700 w-full p-4 rounded-b-xl"
+        class="package-description border border-t-0 border-gray-400 w-full p-4 rounded-b-xl text-xl {value
+          ? 'bg-gray-700'
+          : ''}"
       >
         {@html value
           ? question.choiceDescriptions[
