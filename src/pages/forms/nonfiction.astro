@@ -1,0 +1,14 @@
+---
+import NonFictionForm from "../../components/Form/NonFictionForm.svelte";
+import Page from "../../layouts/Page.astro";
+---
+
+<Page title="Jesse Gerlach | Non Fiction Form">
+  <Fragment slot="head">
+    <script src="https://web3forms.com/client/script.js" async defer></script>
+  </Fragment>
+  <NonFictionForm
+    web3formsKey={import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY}
+    client:load
+  />
+</Page>

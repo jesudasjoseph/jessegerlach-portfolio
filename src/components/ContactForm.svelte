@@ -48,7 +48,14 @@
 )}
   <div class="mb-4 flex flex-col">
     <label for={name} class="sr-only">{label}</label>
-    <input {name} id={name} {type} {required} placeholder={label} />
+    <input
+      {name}
+      id={name}
+      {type}
+      {required}
+      placeholder={label}
+      class="rounded border border-orange-300 bg-orange-100 p-4 text-orange-500 placeholder-orange-300"
+    />
   </div>
 {/snippet}
 
@@ -79,7 +86,7 @@
       id="message"
       placeholder="Message..."
       required
-      class="mb-2 h-50 w-full size-fit"
+      class="mb-2 h-50 w-full size-fit rounded border border-orange-300 bg-orange-100 p-4 text-orange-500 placeholder-orange-300"
     ></textarea>
 
     <div class="mb-2 flex flex-col gap-2">
