@@ -1,57 +1,57 @@
 <script lang="ts">
-  import { questions } from "./config";
-  import Question from "./Question.svelte";
+  import { questions } from './config'
+  import Question from './Question.svelte'
 
-  const { web3formsKey } = $props();
+  const { web3formsKey } = $props()
 
-  let formError: "captcha" | "submission" | null = $state(null);
-  let submitted = $state(false);
+  let formError: 'captcha' | 'submission' | null = $state(null)
+  let submitted = $state(false)
 
   function handleSubmit(event: Event) {
-    event.preventDefault();
-    const form = event.target as HTMLFormElement;
-    const formData = new FormData(form);
+    event.preventDefault()
+    const form = event.target as HTMLFormElement
+    const formData = new FormData(form)
 
-    const hcaptcha = formData.get("h-captcha-response");
+    const hcaptcha = formData.get('h-captcha-response')
 
     if (!hcaptcha) {
-      formError = "captcha";
-      return;
+      formError = 'captcha'
+      return
     }
 
-    fetch("https://api.web3forms.com/submit", {
-      method: "POST",
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
       body: formData,
     })
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          formError = null;
+          formError = null
         } else {
-          formError = "submission";
-          throw Error("Form submission failed");
+          formError = 'submission'
+          throw Error('Form submission failed')
         }
       })
       .catch((e) => {
-        formError = "submission";
-        throw e;
+        formError = 'submission'
+        throw e
       })
       .finally(() => {
-        submitted = true;
-        form.reset();
-      });
+        submitted = true
+        form.reset()
+      })
   }
 
   let answers = $state(
-    Object.fromEntries(questions.map((value) => [value.id, ""])),
-  );
+    Object.fromEntries(questions.map((value) => [value.id, '']))
+  )
 
   const smoothScroll = (id: string) => {
-    document.querySelector(id)?.scrollIntoView({ behavior: "smooth" });
-  };
+    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
 </script>
 
-<form onsubmit={handleSubmit} class="scroll-smooth">
+<form onsubmit={handleSubmit} class="scroll-smooth m-auto md:max-w-3xl px-8">
   <input type="hidden" name="access_key" value={web3formsKey} />
   <input
     hidden
@@ -60,7 +60,7 @@
     type="text"
     value="Fiction"
   />
-  <div class="m-auto max-w-3xl">
+  <div>
     {#each questions as question, index}
       <div
         class="min-h-dvh flex items-center justify-start flex-col relative pt-8 pb-30 mb-12"
@@ -71,7 +71,7 @@
           <button
             type="button"
             class="btn absolute bottom-8 m-0"
-            onclick={() => smoothScroll("#review")}
+            onclick={() => smoothScroll('#review')}
           >
             Review Questions
           </button>
@@ -96,14 +96,18 @@
               class="text-xl text-left cursor-pointer mb-4"
               type="button"
               onclick={() => {
-                smoothScroll(`#${question.id}-container`);
+                smoothScroll(`#${question.id}-container`)
               }}
             >
               <span class="text-3xl font-bold">{index + 1}.</span>
               {question.label}
             </button>
-            <p class="text-xl border-b border-gray-600 p-2">
-              {answers[question.id] ? answers[question.id] : "No Answer"}
+            <p
+              class="text-xl border-b border-gray-600 p-2 {answers[question.id]
+                ? ''
+                : 'text-red-400'}"
+            >
+              {answers[question.id] ? answers[question.id] : 'No Answer'}
             </p>
           </li>
         {/each}

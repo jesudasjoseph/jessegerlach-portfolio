@@ -5,19 +5,19 @@
     Question,
     RadioQuestion,
     TextQuestion,
-  } from "./config";
-  import TextArea from "./TextArea.svelte";
+  } from './config'
+  import TextArea from './TextArea.svelte'
 
   let {
     question,
     index,
-    value = $bindable(""),
+    value = $bindable(''),
   }: {
     question: Question &
-      (PackageQuestion | MultipleChoiceQuestion | RadioQuestion | TextQuestion);
-    index: number;
-    value: string;
-  } = $props();
+      (PackageQuestion | MultipleChoiceQuestion | RadioQuestion | TextQuestion)
+    index: number
+    value: string
+  } = $props()
 </script>
 
 <div class="w-full">
@@ -26,7 +26,7 @@
       {question.intro}
     </p>
   {/if}
-  {#if question.type == "text"}
+  {#if question.type == 'text'}
     <label class="flex flex-col">
       <span class="mb-6 text-2xl">
         <span class="text-3xl font-bold">{index + 1}.</span>
@@ -41,7 +41,7 @@
         required
       />
     </label>
-  {:else if question.type == "long-text"}
+  {:else if question.type == 'long-text'}
     <label class="text-2xl flex flex-col">
       <span class="mb-6">
         <span class="text-3xl font-bold">{index + 1}.</span>
@@ -50,7 +50,7 @@
       <TextArea name={question.name} id={question.id} bind:value required
       ></TextArea>
     </label>
-  {:else if question.type == "radio"}
+  {:else if question.type == 'radio'}
     <fieldset>
       <legend class="mb-6 text-2xl">
         <span class="text-3xl font-bold">{index + 1}.</span>
@@ -71,7 +71,7 @@
         {/each}
       </div>
     </fieldset>
-  {:else if question.type == "multiple-choice"}
+  {:else if question.type == 'multiple-choice'}
     <fieldset>
       <legend class="mb-6 text-2xl">
         <span class="text-3xl font-bold">{index + 1}.</span>
@@ -92,16 +92,16 @@
         {/each}
       </div>
     </fieldset>
-  {:else if question.type == "package"}
+  {:else if question.type == 'package'}
     <fieldset class="text-2xl">
       <legend class="mb-6">
         <span class="text-3xl font-bold">{index + 1}.</span>
         {question.label}
       </legend>
-      <div class="flex justify-evenly">
+      <div class="flex justify-evenly flex-col md:flex-row mb-4 md:mb-0">
         {#each question.choices as choice}
           <div
-            class="grow overflow-clip first:rounded-tl-xl last:rounded-tr-xl first:border-r-0 last:border-l-0 border border-b-0 border-gray-400 hover:bg-gray-600"
+            class="grow overflow-clip first:rounded-t-xl last:rounded-b-xl md:last:rounded-b-none md:first:rounded-tl-xl md:first:rounded-t-none md:last:rounded-tr-xl md:first:border-r-0 md:last:border-l-0 border md:border-b-0! border-gray-400 hover:bg-gray-600 last:border-b md:last:border-b-none"
           >
             <input
               class="appearance-none peer h-0 w-0 block"
@@ -112,7 +112,7 @@
               value={choice}
             />
             <label
-              class="text-center p-4 select-none peer-checked:bg-gray-700 block cursor-pointer border-b border-gray-400 peer-checked:border-gray-700 peer-not-checked:border-b peer-checked:underline"
+              class="text-center p-4 select-none peer-checked:bg-gray-700 block cursor-pointer border-gray-400 md:peer-checked:border-gray-700 md:border-b peer-checked:underline"
               for={choice.toLowerCase()}
             >
               {choice}
@@ -121,10 +121,11 @@
         {/each}
       </div>
       <div
-        class="package-description border border-t-0 border-gray-400 w-full p-4 rounded-b-xl text-xl {value
+        class="package-description border md:border-t-0 border-gray-400 w-full p-4 rounded-xl md:rounded-t-none text-xl {value
           ? 'bg-gray-700'
           : ''}"
       >
+        <h3 class="md:hidden">{value}</h3>
         {@html value
           ? question.choiceDescriptions[
               question.choices.findIndex((v) => v === value)
@@ -137,7 +138,7 @@
 
 <style>
   .package-description :global(ul) {
-    list-style-type: "- ";
+    list-style-type: '- ';
     list-style-position: outside;
     margin-left: 24px;
   }
