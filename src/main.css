@@ -51,5 +51,15 @@
     &:active {
       box-shadow: 2px 4px black;
     }
+
+    &:disabled {
+      @apply cursor-not-allowed bg-amber-800 text-gray-400;
+      box-shadow: none;
+      transform: none;
+    }
   }
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
 }
