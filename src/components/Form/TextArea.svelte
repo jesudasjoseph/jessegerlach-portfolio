@@ -2,9 +2,9 @@
   let {
     id,
     name,
-    value = $bindable(""),
+    value = $bindable(''),
     required,
-  }: { id: string; name: string; value: string; required?: boolean } = $props();
+  }: { id: string; name: string; value: string; required?: boolean } = $props()
 </script>
 
 <textarea
@@ -12,5 +12,4 @@
   {name}
   {id}
   bind:value
-  {required}
-></textarea>
+  {required}></textarea>

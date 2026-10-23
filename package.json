@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "prettier-check": "prettier . --check"
+    "prettier-check": "prettier . --check",
+    "prettier": "prettier . -w"
   },
   "dependencies": {
     "@astrojs/svelte": "^9.1.0",
@@ -25,6 +26,8 @@
   },
   "devDependencies": {
     "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.1",
+    "prettier-plugin-svelte": "^4.1.1",
     "prettier-plugin-tailwindcss": "^0.8.1"
   }
 }

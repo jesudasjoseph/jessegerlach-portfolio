@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import { questions } from './config'
   import Question from './Question.svelte'
 
@@ -52,6 +53,29 @@
 
   let contractDialog: HTMLDialogElement
   let contractRead: null | boolean = $state(null)
+  let reviewScrolled = $state(false)
+  let formFilled = $derived(Object.values(answers).every((v) => v))
+
+  onMount(() => {
+    const observer = new IntersectionObserver(
+      () => {
+        reviewScrolled = true
+      },
+      {
+        root: document.querySelector('body'),
+        rootMargin: '0px',
+        scrollMargin: '0px',
+        threshold: 1.0,
+      }
+    )
+
+    const review = document.querySelector('#review')
+
+    if (review) observer.observe(review)
+    return () => {
+      if (review) observer.unobserve(review)
+    }
+  })
 </script>
 
 <form onsubmit={handleSubmit} class="scroll-smooth m-auto md:max-w-3xl px-8">
@@ -76,7 +100,15 @@
             class="btn absolute bottom-8 m-0"
             onclick={() => smoothScroll('#review')}
           >
-            Review Questions
+            Review Answers
+          </button>
+        {:else if reviewScrolled}
+          <button
+            type="button"
+            class="btn absolute bottom-8 m-0"
+            onclick={() => smoothScroll(`#review`)}
+          >
+            Back to Review
           </button>
         {:else}
           <button
@@ -116,31 +148,15 @@
         {/each}
       </ol>
     </div>
-    <input
-      type="checkbox"
-      required
-      name="Read Contract"
-      hidden
-      bind:checked={contractRead}
-    />
-    <div class="text-xl">
-      Please review the contract.
-      <button
-        class="btn"
-        type="button"
-        onclick={() => {
-          contractDialog.showModal()
-          contractRead = true
-        }}
-      >
-        Read Contract
-      </button>
-    </div>
+
     <div class="h-captcha" data-captcha="true"></div>
     <button
-      type="submit"
+      type="button"
       class="btn text-lg"
-      disabled={Object.values(answers).every((v) => !v) && !contractRead}
+      disabled={!formFilled}
+      onclick={() => {
+        contractDialog.showModal()
+      }}
     >
       Submit
     </button>
@@ -155,13 +171,21 @@
         Preview
       </h1>
       <button
-        class="cursor-pointer p-3 leading-1 border rounded-xl"
+        class="cursor-pointer p-3 group relative"
         type="button"
         onclick={() => {
           contractDialog.close()
         }}
       >
-        Close
+        <div>
+          <div
+            class="border w-4 -rotate-45 group-hover:scale-110 absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-1/2 duration-150 transition-all"
+          ></div>
+          <div
+            class="border w-4 rotate-45 group-hover:scale-110 absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-1/2 duration-150 transition-all"
+          ></div>
+        </div>
+        <span class="sr-only">Cancel</span>
       </button>
     </div>
     <div class="max-h-[75dvh] overflow-scroll px-4 mb-4 contract">
@@ -713,6 +737,26 @@
         agree to every term, including the payment, credit, termination, and
         liquidated damages provisions.
       </p>
+      <div class="border-t mx-4 my-8"></div>
+      <div class="flex justify-between items-top gap-8 px-4 pb-8">
+        <label class="cursor-pointer flex items-center gap-4">
+          <input
+            type="checkbox"
+            required
+            name="Read Contract"
+            bind:checked={contractRead}
+          />
+          <p class="m-0">
+            I have read the above contract and hereby express my intent to
+            proceed with the contract.
+          </p>
+        </label>
+        <button
+          class="btn py-3 my-0"
+          type="submit"
+          disabled={!(formFilled && contractRead)}>Submit</button
+        >
+      </div>
     </div>
   </dialog>
 </form>

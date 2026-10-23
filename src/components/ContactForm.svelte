@@ -1,50 +1,50 @@
 <script lang="ts">
-  const { web3formsKey } = $props();
+  const { web3formsKey } = $props()
 
-  let formError: "captcha" | "submission" | null = $state(null);
-  let submitted = $state(false);
+  let formError: 'captcha' | 'submission' | null = $state(null)
+  let submitted = $state(false)
 
   function handleSubmit(event: Event) {
-    event.preventDefault();
-    const form = event.target as HTMLFormElement;
-    const formData = new FormData(form);
+    event.preventDefault()
+    const form = event.target as HTMLFormElement
+    const formData = new FormData(form)
 
-    const hcaptcha = formData.get("h-captcha-response");
+    const hcaptcha = formData.get('h-captcha-response')
 
     if (!hcaptcha) {
-      formError = "captcha";
-      return;
+      formError = 'captcha'
+      return
     }
 
-    fetch("https://api.web3forms.com/submit", {
-      method: "POST",
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
       body: formData,
     })
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          formError = null;
+          formError = null
         } else {
-          formError = "submission";
-          throw Error("Form submission failed");
+          formError = 'submission'
+          throw Error('Form submission failed')
         }
       })
       .catch((e) => {
-        formError = "submission";
-        throw e;
+        formError = 'submission'
+        throw e
       })
       .finally(() => {
-        submitted = true;
-        form.reset();
-      });
+        submitted = true
+        form.reset()
+      })
   }
 </script>
 
 {#snippet inputwithlabel(
   label: string,
   name: string,
-  type: string = "text",
-  required: boolean = false,
+  type: string = 'text',
+  required: boolean = false
 )}
   <div class="mb-4 flex flex-col">
     <label for={name} class="sr-only">{label}</label>
@@ -61,7 +61,7 @@
 
 {#if submitted}
   <div class="p-4">
-    {#if formError === "submission"}
+    {#if formError === 'submission'}
       <span class="text-red-700">
         Error: Please try refreshing the page and try submitting again.
       </span>
@@ -78,8 +78,8 @@
     </h2>
     <input type="hidden" name="access_key" value={web3formsKey} />
 
-    {@render inputwithlabel("Name", "name", "text", true)}
-    {@render inputwithlabel("Email", "email", "email", true)}
+    {@render inputwithlabel('Name', 'name', 'text', true)}
+    {@render inputwithlabel('Email', 'email', 'email', true)}
     <label for="message" class="sr-only">Message</label>
     <textarea
       name="message"
@@ -90,7 +90,7 @@
     ></textarea>
 
     <div class="mb-2 flex flex-col gap-2">
-      {#if formError === "captcha"}
+      {#if formError === 'captcha'}
         <span class="grow text-red-700">Please complete the captcha</span>
       {/if}
       <div class="h-captcha" data-captcha="true"></div>

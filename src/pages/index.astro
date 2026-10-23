@@ -1,18 +1,18 @@
 ---
-import Page from "../layouts/Page.astro";
-import ButtonLink from "../components/ButtonLink.astro";
-import Card from "../components/Card.astro";
+import Page from '../layouts/Page.astro'
+import ButtonLink from '../components/ButtonLink.astro'
+import Card from '../components/Card.astro'
 
-import Profile from "../images/jesse-headshot.jpg";
-import RoyalRoadLogo from "../images/logos/royal-road.png";
-import PatreonLogo from "../images/logos/patreon.png";
-import RicklefordCover from "../images/books/RickleFord-cover.png";
-import TheBanisherChronicles0Cover from "../images/books/TheBanisherChronicles-TheTraitorsReturn-cover.png";
-import TheOrionDivision0Cover from "../images/books/TheOrionDivision-OfStormAndRuin-cover.png";
-import TheSoundShaperSeries2Cover from "../images/books/TheSoundShaperSeries-TheLabyrinthOfSound-cover.png";
-import TheSoundShaperSeries1Cover from "../images/books/TheSoundShaperSeries-TrialOfTheAncients-cover.png";
-import TheSoundShaperSeries0Cover from "../images/books/TheSoundShaperSeries-ProjectExodus-cover.png";
-import ContactForm from "../components/ContactForm.svelte";
+import Profile from '../images/jesse-headshot.jpg'
+import RoyalRoadLogo from '../images/logos/royal-road.png'
+import PatreonLogo from '../images/logos/patreon.png'
+import RicklefordCover from '../images/books/RickleFord-cover.png'
+import TheBanisherChronicles0Cover from '../images/books/TheBanisherChronicles-TheTraitorsReturn-cover.png'
+import TheOrionDivision0Cover from '../images/books/TheOrionDivision-OfStormAndRuin-cover.png'
+import TheSoundShaperSeries2Cover from '../images/books/TheSoundShaperSeries-TheLabyrinthOfSound-cover.png'
+import TheSoundShaperSeries1Cover from '../images/books/TheSoundShaperSeries-TrialOfTheAncients-cover.png'
+import TheSoundShaperSeries0Cover from '../images/books/TheSoundShaperSeries-ProjectExodus-cover.png'
+import ContactForm from '../components/ContactForm.svelte'
 ---
 
 <Page title="Jesse Gerlach">
@@ -38,10 +38,8 @@ import ContactForm from "../components/ContactForm.svelte";
         another edition), or a new one I haven't heard of.
       </p>
       <p class="md:text-3xl text-2xl text-center">
-        I have competitive prices on each of those! <a
-          href="#contact"
-          class="underline"
-        >
+        I have competitive prices on each of those!{' '}
+        <a href="#contact" class="underline">
           Send me a message below!
         </a>
       </p>
@@ -77,9 +75,7 @@ import ContactForm from "../components/ContactForm.svelte";
       <p>Join me. I can't wait to get to know you.</p>
     </div>
 
-    <div
-      class="flex flex-row flex-wrap items-center justify-center lg:gap-16 md:gap-8 gap-4"
-    >
+    <div class="flex flex-row flex-wrap items-center justify-center lg:gap-16 md:gap-8 gap-4">
       <ButtonLink
         href="https://www.royalroad.com/profile/419627"
         target="_blank"
@@ -108,9 +104,7 @@ import ContactForm from "../components/ContactForm.svelte";
 
     <div class="flex flex-col items-center py-30">
       <h2 class="mb-8 text-3xl font-bold">~~~ My Books ~~~</h2>
-      <div
-        class="flex flex-row flex-wrap items-center justify-center gap-8 m-8"
-      >
+      <div class="flex flex-row flex-wrap items-center justify-center gap-8 m-8">
         <Card
           cover={TheSoundShaperSeries0Cover.src}
           href="https://www.amazon.com/Project-Exodus-Sound-Shaper-Gerlach/dp/B0BMZP8ZNV"
@@ -124,9 +118,7 @@ import ContactForm from "../components/ContactForm.svelte";
           href="https://www.amazon.com/Labyrinth-Sound-Shaper/dp/B0D97VVMQZ"
         />
       </div>
-      <div
-        class="flex flex-row flex-wrap items-center justify-center gap-8 m-8"
-      >
+      <div class="flex flex-row flex-wrap items-center justify-center gap-8 m-8">
         <Card
           cover={RicklefordCover.src}
           href="https://www.amazon.com/Rickleford-Jesse-Alexander-Gerlach/dp/B0GQTJY9CV"
