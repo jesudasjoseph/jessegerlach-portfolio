@@ -28,6 +28,7 @@ jobs:
         uses: withastro/action@v6
         env:
           PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ vars.WEB3FORMS_ACCESS_KEY }}
+          PUBLIC_WEB3FORMS_ACCESS_KEY_NO_CAPTCHA: ${{ vars.WEB3FORMS_ACCESS_KEY_NO_CAPTCHA }}
 
   deploy:
     needs: build
