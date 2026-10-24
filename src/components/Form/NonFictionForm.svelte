@@ -5,20 +5,10 @@
 
   const { web3formsKey } = $props()
 
-  let formError: 'captcha' | 'submission' | null = $state(null)
-  let submitted = $state(false)
-
   function handleSubmit(event: Event) {
     event.preventDefault()
     const form = event.target as HTMLFormElement
     const formData = new FormData(form)
-
-    const hcaptcha = formData.get('h-captcha-response')
-
-    if (!hcaptcha) {
-      formError = 'captcha'
-      return
-    }
 
     fetch('https://api.web3forms.com/submit', {
       method: 'POST',
@@ -27,19 +17,14 @@
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          formError = null
+          form.reset()
+          window.location.href = '/forms/thank-you'
         } else {
-          formError = 'submission'
           throw Error('Form submission failed')
         }
       })
       .catch((e) => {
-        formError = 'submission'
         throw e
-      })
-      .finally(() => {
-        submitted = true
-        form.reset()
       })
   }
 
@@ -57,19 +42,21 @@
   let formFilled = $derived(Object.values(answers).every((v) => v))
 
   onMount(() => {
-    const observer = new IntersectionObserver(
-      () => {
-        reviewScrolled = true
-      },
-      {
-        root: document.querySelector('body'),
-        rootMargin: '0px',
-        scrollMargin: '0px',
-        threshold: 1.0,
-      }
-    )
-
     const review = document.querySelector('#review')
+
+    const scrollCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.target == review && entry.intersectionRatio > 0)
+          reviewScrolled = true
+      })
+    }
+
+    const observer = new IntersectionObserver(scrollCallback, {
+      root: null,
+      rootMargin: '0px',
+      scrollMargin: '0px',
+      threshold: 0.1,
+    })
 
     if (review) observer.observe(review)
     return () => {
@@ -149,7 +136,6 @@
       </ol>
     </div>
 
-    <div class="h-captcha" data-captcha="true"></div>
     <button
       type="button"
       class="btn text-lg"
@@ -738,7 +724,7 @@
         liquidated damages provisions.
       </p>
       <div class="border-t mx-4 my-8"></div>
-      <div class="flex justify-between items-top gap-8 px-4 pb-8">
+      <div class="flex justify-between items-center gap-8 px-4 pb-8">
         <label class="cursor-pointer flex items-center gap-4">
           <input
             type="checkbox"

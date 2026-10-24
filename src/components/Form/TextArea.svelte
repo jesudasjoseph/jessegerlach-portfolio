@@ -12,4 +12,5 @@
   {name}
   {id}
   bind:value
+  rows="8"
   {required}></textarea>
