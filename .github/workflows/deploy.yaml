@@ -39,27 +39,9 @@ jobs:
         run: |
           pnpm add -D wrangler
           pnpm install --frozen-lockfile
-
       - name: Deploy
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy ./build --project-name=jessegerlach-portfolio --branch=main --commit-dirty=true
-
-      - name: Install, build, and upload your site
-        uses: withastro/action@v6
-        env:
-          PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ vars.WEB3FORMS_ACCESS_KEY }}
-          PUBLIC_WEB3FORMS_ACCESS_KEY_NO_CAPTCHA: ${{ vars.WEB3FORMS_ACCESS_KEY_NO_CAPTCHA }}
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
