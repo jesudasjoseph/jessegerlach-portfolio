@@ -24,6 +24,29 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v7
+      - name: Install pnpm/node
+        uses: pnpm/setup@v3
+        with:
+          version: 12
+          runtime: node@26
+          cache: true
+      - name: Build
+        env:
+          PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ vars.WEB3FORMS_ACCESS_KEY }}
+          PUBLIC_WEB3FORMS_ACCESS_KEY_NO_CAPTCHA: ${{ vars.WEB3FORMS_ACCESS_KEY_NO_CAPTCHA }}
+        run: pnpm build
+      - name: Install Wrangler
+        run: |
+          pnpm add -D wrangler
+          pnpm install --frozen-lockfile
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy ./build --project-name=jessegerlach-portfolio --branch=main --commit-dirty=true
+
       - name: Install, build, and upload your site
         uses: withastro/action@v6
         env:
