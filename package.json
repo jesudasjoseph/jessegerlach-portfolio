@@ -14,9 +14,9 @@
     "prettier": "prettier . -w"
   },
   "dependencies": {
-    "@astrojs/svelte": "^9.1.0",
+    "@astrojs/svelte": "9.1.6",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.4.0",
+    "astro": "7.4.13",
     "svelte": "^5.57.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3"

@@ -77,7 +77,7 @@
   <div>
     {#each questions as question, index}
       <div
-        class="min-h-dvh flex items-center justify-start flex-col relative pt-8 pb-30 mb-[25dvh]"
+        class="min-h-[100vh] flex items-center justify-start flex-col relative pt-8 pb-30 mb-[25dvh]"
         id="{question.id}-container"
       >
         <Question {question} {index} bind:value={answers[question.id]} />
